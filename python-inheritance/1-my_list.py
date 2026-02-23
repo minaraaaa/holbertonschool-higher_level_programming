@@ -1,18 +1,10 @@
 #!/usr/bin/python3
-"""
-modules define a function that returns list of available
-attributes and methods of an object
-"""
+
+"""class a subclass of  `list` class."""
 
 
-def lookup(obj):
-    """
-    list of available attributes and methods
-
-    Args:
-        obj: object to return
-
-    Returns:
-        list object
-    """
-    return dir(obj)
+class MyList(list):
+    """class of list class."""
+    def print_sorted(self):
+        """print the elements of the list in ascending sort"""
+        print(sorted(self))

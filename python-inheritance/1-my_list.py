@@ -1,18 +1,18 @@
 #!/usr/bin/python3
 """
-Defines a class MyList that inherits from list.
+modules define a function that returns list of available
+attributes and methods of an object
 """
 
 
-class MyList(list):
+def lookup(obj):
     """
-    MyList inherits from list and adds a method
-    to print the list sorted in ascending order.
-    """
+    list of available attributes and methods
 
-    def print_sorted(self):
-        """
-        Prints the list sorted in ascending order
-        without modifying the original list.
-        """
-        print(sorted(self))
+    Args:
+        obj: object to return
+
+    Returns:
+        list object
+    """
+    return dir(obj)

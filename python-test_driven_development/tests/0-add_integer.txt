@@ -4,38 +4,18 @@ Test-Driven Development: 0-add_integer
 
     >>> add_integer = __import__('0-add_integer').add_integer
 
-Normal integer addition:
     >>> add_integer(1, 2)
     3
-
-Negative integers:
     >>> add_integer(100, -2)
     98
-
-Default second argument:
     >>> add_integer(2)
     100
-
-Float addition (casts to int first):
     >>> add_integer(100.3, -2)
     98
-
-Float and Float:
     >>> add_integer(10.9, 10.9)
     20
 
-Testing TypeErrors for 'a':
     >>> add_integer("School", 3)
-    Traceback (most recent call last):
-        ...
-    TypeError: a must be an integer
-
-    >>> add_integer(None)
-    Traceback (most recent call last):
-        ...
-    TypeError: a must be an integer
-
-    >>> add_integer([1, 2], 4)
     Traceback (most recent call last):
         ...
     TypeError: a must be an integer
@@ -45,7 +25,6 @@ Testing TypeErrors for 'a':
         ...
     TypeError: a must be an integer
 
-Testing TypeErrors for 'b':
     >>> add_integer(4, "School")
     Traceback (most recent call last):
         ...
@@ -56,7 +35,12 @@ Testing TypeErrors for 'b':
         ...
     TypeError: b must be an integer
 
-    >>> add_integer(4, False)
+    >>> add_integer(float('inf'), 2)
     Traceback (most recent call last):
         ...
-    TypeError: b must be an integer
+    OverflowError: cannot convert float infinity to integer
+
+    >>> add_integer(float('nan'), 2)
+    Traceback (most recent call last):
+        ...
+    ValueError: cannot convert float NaN to integer

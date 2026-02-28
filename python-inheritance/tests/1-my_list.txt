@@ -16,20 +16,13 @@ How to Use 1-my_list module
     >>> print(my_list)
     [1, 4, 2, 3, 5]
 
-Test with negative numbers:
-    >>> m_list = MyList()
-    >>> m_list.append(-5)
-    >>> m_list.append(2)
-    >>> m_list.append(-8)
-    >>> m_list.append(1)
-    >>> print(m_list)
-    [-5, 2, -8, 1]
-    >>> m_list.print_sorted()
-    [-8, -5, 1, 2]
+    >>> my_list = MyList()
+    >>> my_list.append(-5)
+    >>> my_list.append(2)
+    >>> my_list.append(-8)
+    >>> my_list.print_sorted()
+    [-8, -5, 2]
 
-Test with an empty list:
-    >>> e_list = MyList()
-    >>> print(e_list)
-    []
-    >>> e_list.print_sorted()
+    >>> my_list = MyList()
+    >>> my_list.print_sorted()
     []

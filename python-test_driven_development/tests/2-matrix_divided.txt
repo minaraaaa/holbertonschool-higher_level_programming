@@ -1,0 +1,54 @@
+=========================================
+Test-Driven Development: 2-matrix_divided
+=========================================
+
+    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+Normal division:
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> matrix_divided(matrix, 3)
+    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+Checking if original matrix is unmodified:
+    >>> matrix
+    [[1, 2, 3], [4, 5, 6]]
+
+Division by float:
+    >>> matrix_divided(matrix, 2.5)
+    [[0.4, 0.8, 1.2], [1.6, 2.0, 2.4]]
+
+Division by zero:
+    >>> matrix_divided(matrix, 0)
+    Traceback (most recent call last):
+        ...
+    ZeroDivisionError: division by zero
+
+Matrix is not a list:
+    >>> matrix_divided("not a list", 3)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Matrix contains non-lists (1D list instead of 2D):
+    >>> matrix_divided([1, 2, 3], 3)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Matrix contains non-numbers:
+    >>> matrix_divided([[1, 2, "a"]], 3)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Matrix rows are different sizes:
+    >>> matrix_divided([[1, 2, 3], [4, 5]], 3)
+    Traceback (most recent call last):
+        ...
+    TypeError: Each row of the matrix must have the same size
+
+Div is not a number:
+    >>> matrix_divided(matrix, "3")
+    Traceback (most recent call last):
+        ...
+    TypeError: div must be a number

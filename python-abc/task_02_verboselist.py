@@ -1,55 +1,28 @@
 #!/usr/bin/python3
-
-"""
-Extending the Python List with Notifications
-"""
+"""Module that defines Shape abstract class and its subclasses"""
 
 
 class VerboseList(list):
-    """
-    VerboseList Class inherit from the built in list class
+    """A list that prints a message when an item is added"""
 
-    Args:
-        list (class): original list class
-    """
     def append(self, item):
-        """
-        append Improve append message with verbose
-
-        Args:
-            item (any): item to append
-        """
+        """Override the append method to print a message"""
         super().append(item)
         print(f"Added [{item}] to the list.")
 
-    def extend(self, item):
-        """
-        extend Improve extend message with verbose
 
-        Args:
-            item (any): item to extend
-        """
-        super().extend(item)
-        print(f"Extended the list with [{len(item)}] items.")
+    def extend(self, x):
+        """Override the extend method to print a message"""
+        super().extend(x)
+        print(f"Extended the list with [{len(x)}] items.")
+
 
     def remove(self, item):
-        """
-        remove Remove extend message with verbose
-
-        Args:
-            item (any): item to remove
-        """
         print(f"Removed [{item}] from the list.")
-        super().remove(item)
-
+        return super().remove(item)
+    
+           
     def pop(self, index=-1):
-        """
-        pop Pop extend message with verbose
-
-        Args:
-            index (int, optional): Number of the index to pop.
-            Defaults to None.
-        """
-
-        print(f"Popped [{self[index]}] from the list.")
-        super().pop(index)
+        item = self[index]
+        print(f"Popped [{item}] from the list.")
+        return super().pop(index)

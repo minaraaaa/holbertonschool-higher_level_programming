@@ -1,0 +1,72 @@
+=======================================
+Test-Driven Development: 4-print_square
+=======================================
+
+    >>> print_square = __import__('4-print_square').print_square
+
+Normal execution:
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+
+    >>> print_square(2)
+    ##
+    ##
+
+Size 1:
+    >>> print_square(1)
+    #
+
+Size 0 (prints nothing):
+    >>> print_square(0)
+
+Testing ValueErrors (negative integer):
+    >>> print_square(-1)
+    Traceback (most recent call last):
+        ...
+    ValueError: size must be >= 0
+
+    >>> print_square(-4)
+    Traceback (most recent call last):
+        ...
+    ValueError: size must be >= 0
+
+Testing TypeErrors (floats):
+    >>> print_square(3.14)
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
+
+    >>> print_square(-3.14)
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
+
+Testing TypeErrors (other types):
+    >>> print_square("4")
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
+
+    >>> print_square([4])
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
+
+    >>> print_square(True)
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
+
+    >>> print_square(None)
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
+
+Missing arguments:
+    >>> print_square()
+    Traceback (most recent call last):
+        ...
+    TypeError: print_square() missing 1 required positional argument: 'size'

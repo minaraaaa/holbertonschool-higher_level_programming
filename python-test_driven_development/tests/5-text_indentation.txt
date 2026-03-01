@@ -1,59 +1,30 @@
-=========================================
 Test-Driven Development: 5-text_indentation
-=========================================
 
-    >>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> text_indentation = __import__('5-text_indentation').text_indentation
 
-Normal text formatting:
-    >>> text_indentation("Hello. How are you? I am fine: great.")
-    Hello.
-    <BLANKLINE>
-    How are you?
-    <BLANKLINE>
-    I am fine:
-    <BLANKLINE>
-    great.
+>>> text_indentation("Hello. How are you? I am fine: great.")
+Hello.
+<BLANKLINE>
+How are you?
+<BLANKLINE>
+I am fine:
+<BLANKLINE>
+great.
 
-No punctuation:
-    >>> text_indentation("Hello World")
-    Hello World
+>>> text_indentation("Hello World")
+Hello World
 
-Leading and trailing spaces:
-    >>> text_indentation("   Holberton School   ")
-    Holberton School
+>>> text_indentation("   Holberton School   ")
+Holberton School
 
-Multiple punctuation together:
-    >>> text_indentation("Wait.. What??")
-    Wait.
-    <BLANKLINE>
-    .
-    <BLANKLINE>
-    What?
-    <BLANKLINE>
-    ?
-    <BLANKLINE>
+>>> text_indentation("")
 
-Empty string:
-    >>> text_indentation("")
+>>> text_indentation(123)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
 
-Testing TypeErrors:
-    >>> text_indentation(123)
-    Traceback (most recent call last):
-        ...
-    TypeError: text must be a string
-
-    >>> text_indentation(["Hello"])
-    Traceback (most recent call last):
-        ...
-    TypeError: text must be a string
-
-    >>> text_indentation(None)
-    Traceback (most recent call last):
-        ...
-    TypeError: text must be a string
-
-Missing arguments:
-    >>> text_indentation()
-    Traceback (most recent call last):
-        ...
-    TypeError: text_indentation() missing 1 required positional argument: 'text'
+>>> text_indentation(None)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string

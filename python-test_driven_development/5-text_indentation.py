@@ -1,19 +1,28 @@
 #!/usr/bin/python3
 """
-This module provides a function that formats and prints text.
+This module provides a function for text indentation.
 """
 
 
 def text_indentation(text):
     """
-    Prints text with 2 new lines after each '.', '?', and ':'.
-    Removes leading and trailing spaces from each printed line.
+    Prints a text with 2 new lines after each of these characters: ., ? and :
+    No space at the beginning or at the end of each printed line.
     """
-    if type(text) is not str:
+    if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    s = text.replace('.', '.\n\n').replace('?', '?\n\n').replace(':', ':\n\n')
+    special_chars = [".", "?", ":"]
+    i = 0
+    text = text.strip()
 
-    lines = [line.strip(' \t') for line in s.split('\n')]
-
-    print("\n".join(lines), end="")
+    while i < len(text):
+        print(text[i], end="")
+        if text[i] in special_chars:
+            print("\n")
+            i += 1
+            # Növbəti sətirin əvvəlindəki boşluqları atlayırıq
+            while i < len(text) and text[i] == ' ':
+                i += 1
+            continue
+        i += 1

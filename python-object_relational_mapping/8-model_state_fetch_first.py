@@ -1,36 +1,35 @@
 #!/usr/bin/python3
 """
-prints the first State object from the database hbtn_0e_6_usa
+Verilənlər bazasındakı ilk State obyektini çap edən skript.
 """
-
-from sqlalchemy import (create_engine)
 import sys
 from model_state import Base, State
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
+    # Arqumentlərin götürülməsi
+    username = sys.argv[1]
+    password = sys.argv[2]
+    db_name = sys.argv[3]
 
-    # Check input arguments
-    if len(sys.argv) != 4:
-        print(f"Usage: {sys.argv[0]} "
-              "<mysql username> <mysql password> <database name>")
-        sys.exit(1)
+    # Engine yaradılması (localhost:3306)
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
+        username, password, db_name), pool_pre_ping=True)
 
-    # DB connection
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
-        sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
-
-    # Create tables
-    Base.metadata.create_all(engine)
-
-    # Create a configured "Session" class
+    # Sessiyanın yaradılması
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Query and print the first states
-    state = session.query(State).order_by(State.id).first()
-    if state:
-        print(f"{state.id}: {state.name}")
+    # İlk state obyektinin tapılması (states.id-yə görə)
+    # .first() metodundan istifadə edərək bütün datanı çəkmədən birini alırıq
+    first_state = session.query(State).order_by(State.id).first()
+
+    # Nəticənin çap olunması
+    if first_state:
+        print("{}: {}".format(first_state.id, first_state.name))
     else:
         print("Nothing")
+
+    # Sessiyanın bağlanması
     session.close()
